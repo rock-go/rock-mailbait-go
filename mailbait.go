@@ -43,15 +43,15 @@ var baitTypeOF = reflect.TypeOf((*MailBait)(nil)).String()
 
 func newMailBait(cfg *config) *MailBait {
 	bait := &MailBait{cfg: cfg}
-	bait.S = lua.INIT
-	bait.T = baitTypeOF
+	bait.Status = lua.INIT
+	bait.TypeOf = baitTypeOF
 	return bait
 }
 
 func (m *MailBait) Start() error {
 	m.ctx, m.cancel = context.WithCancel(context.Background())
-	m.S = lua.RUNNING
-	m.U = time.Now()
+	m.Status = lua.RUN
+	m.Uptime = time.Now()
 	m.status = IDLE
 	logger.Infof("%s mail bait start successfully", m.cfg.name)
 	return nil
@@ -63,7 +63,7 @@ func (m *MailBait) Close() error {
 	}
 
 	logger.Infof("%s mail bait close successfully", m.cfg.name)
-	m.S = lua.CLOSE
+	m.Status = lua.CLOSE
 	return nil
 }
 

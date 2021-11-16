@@ -18,7 +18,7 @@ type config struct {
 }
 
 type Mail interface {
-	lua.LightUserDataIFace
+	lua.LFace
 	SendMail(interface{}) error
 }
 

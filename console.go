@@ -4,8 +4,8 @@ import "github.com/rock-go/rock/lua"
 
 func (m *MailBait) Header(out lua.Printer) {
 	out.Printf("type: %s", m.Type())
-	out.Printf("uptime: %s", m.U)
-	out.Printf("status: %s", m.S)
+	out.Printf("uptime: %s", m.Uptime)
+	out.Printf("status: %s", m.Status)
 	out.Printf("version: v1.0.0")
 	out.Println("")
 }
